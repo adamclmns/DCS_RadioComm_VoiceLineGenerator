@@ -15,10 +15,15 @@ This tool aims to provide some barebones audio with a light radio-like filter ap
 Once you're setup, just make a CSV file with the audio file names in column 1, and the phrase, with wrapped in `"` or `,` in column 2
 
 generate audio with the default voice, and a csv file of lines with 
+
 `python ./dcs_speech_generator.py --file csvFilePath.csv`
+
 generate with a specific voice using 
+
 `python ./dcs_speech_generator.py --file csvFilePath.csv --voice [voiceID from your system]`
+
 To list all currently installed voice ID's for your system 
+
 `python ./dcs_speech_generator.py --lsvoices`
 
 
