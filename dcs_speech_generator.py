@@ -13,10 +13,13 @@ from pydub import AudioSegment, generators, silence
 
 class RadioCommVoiceGenerator:
     def __init__(self):
+        # PARAMS defined as class variables
         self.file = ""
-        # This voice is on 99% of all Windows 10/11 systems
+            # This voice is on 99% of all Windows 10/11 systems
         self.voice = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_DAVID_11.0"
         self.lsvoices = False
+        self.volume =0
+        # END PARAMS
         # Volume mix settings for future customization
         self._click_volume_decrease = 15
         self._filter_boost = 10
@@ -54,8 +57,8 @@ class RadioCommVoiceGenerator:
             duration=len(combined))  # white noise profile generated
         # overlay white noise, dropping WN volume.
         overlayed = combined.overlay(whiteNoise - self._white_noise_decrease)
-        overlayed = overlayed + self._overlayed_boost  # bump volume of all audio
-        return overlayed
+        overlayed = overlayed + self.volume  # bump volume of all audio
+        return overlayed 
 
     def configureFfmpegForPyDub(self):
         AudioSegment.converter = self._ffmpegHome+"\\ffmpeg.exe"
@@ -151,6 +154,7 @@ def configureCommGeneratorFromCLI(sysArgsv):
                         type=str, default=defaultOutputDir)
     parser.add_argument("--ffmpegHome", help="Manually specify the FFMPEG home directory where /bin/ffmpeg.exe exists",
                         type=str, default=defaultFfmpegHome)
+    parser.add_argument("--volume",type=int,default=0,help="Set a volume boost or drop for the generated audio")
     parser.parse_known_args(sysArgsv, namespace=commGeneratorClass)
     return commGeneratorClass
 
