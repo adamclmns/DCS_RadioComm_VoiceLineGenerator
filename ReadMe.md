@@ -7,7 +7,7 @@ This tool aims to provide some barebones audio with a light radio-like filter ap
 ## Installing this Script
 
 * Must have Python 3.9 or higher installed.
-* Must have `ffmpeg.exe` and `ffprobe.exe` located at `%FFMPEG_HOME%/bin/`. (Download a windows package from - http://www.ffmpeg.org/download.html#build-windows)
+* Must have `ffmpeg.exe` and `ffprobe.exe` located at `%FFMPEG_HOME%`. (Download a windows package from - http://www.ffmpeg.org/download.html#build-windows)
 * This script uses [Pyttsx3](https://pypi.org/project/pyttsx3/) and [pydub](https://github.com/jiaaro/pydub). Make sure you `pip install` both of those. You can run `pip install -r requirements.txt` to install dependencies automatically. 
 
 
